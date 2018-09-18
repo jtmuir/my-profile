@@ -20,20 +20,21 @@ request = pc.makeRequestRSpec()
 # Add a raw PC to the request.
 
 node1 = request.XenVM("node-1")
+node2 = request.XenVM("node-2")
+node3 = request.XenVM("node-3")
+node4 = request.XenVM("node-4")
 
 node1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
-node1.routable_control_ip = "true"
-
-# Install and execute a script that is contained in the repository.
-node1.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
-
-node2 = request.XenVM("node-2")
-
 node2.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
-node2.routable_control_ip = "true"
+node3.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node4.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
 
-# Install and execute a script that is contained in the repository.
+node1.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
 node2.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
+node3.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
+node4.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
+
+node1.routable_control_ip = "true"
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
