@@ -27,7 +27,7 @@ node1.routable_control_ip = "true"
 
 iface1 = node1.addInterface("if1")
 iface1.component_id = "eth1"
-iface1.addAddress(rspec.IPv4Address("192.168.1.1", "255.255.255.0"))
+iface1.addAddress(pg.IPv4Address("192.168.1.1", "255.255.255.0"))
 
 node2 = request.XenVM("node-2")
 
@@ -36,7 +36,7 @@ node2.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
 
 iface2 = node2.addInterface("if2")
 iface2.component_id = "eth2"
-iface2.addAddress(rspec.IPv4Address("192.168.1.2", "255.255.255.0"))
+iface2.addAddress(pg.IPv4Address("192.168.1.2", "255.255.255.0"))
 
 link = request.LAN("lan")
 
